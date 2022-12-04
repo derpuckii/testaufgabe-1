@@ -164,7 +164,8 @@ class GameController extends Controller
         // Here, you need to code the logic that allows a player to make a move.
         // You can make use of the methods offered by the $game object.
         // =============================================================================================================
-
+        If (!$this->isAllowedToPlay($game, GamePlayer::Human))
+            $game->setSpace ( $x, $y,) (GamePlayer::Human);
         // We've previously ensured that the player is allowed to play and the game has not ended yet.
         // The method $game->getSpace( $x, $y ) will return the content of a space - either GameMark::None (free),
         // GameMark::Cross (belongs to the bot) or GameMark::Circle (belongs to the player).
@@ -177,7 +178,7 @@ class GameController extends Controller
         // [ The code to check if the space is free goes here ]
 
         // If the space is not free, run the code in the line below by removing the //
-        //return response("This space has already been claimed!")->setStatusCode(403)->header('Content-Type', 'text/plain');
+        return response("This space has already been claimed!")->setStatusCode(403)->header('Content-Type', 'text/plain');
 
         // [ The code to update the game board goes here ]
 
